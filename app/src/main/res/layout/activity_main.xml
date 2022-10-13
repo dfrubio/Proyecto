@@ -8,11 +8,15 @@
 
     <EditText
         android:id="@+id/editTextEmail"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="36dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="200dp"
+        android:layout_marginEnd="30dp"
         android:ems="10"
-        android:hint="Email"
+        android:fontFamily="@font/poppins_regular"
+        android:background="@drawable/text_bordes_gris"
+        android:hint="Ingresa correo"
         android:inputType="textEmailAddress"
         android:minHeight="48dp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -21,11 +25,15 @@
 
     <EditText
         android:id="@+id/editTextPassword"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="76dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="80dp"
+        android:layout_marginEnd="30dp"
         android:ems="10"
+        android:fontFamily="@font/poppins_regular"
         android:hint="Ingresa contraseña"
+        android:background="@drawable/text_bordes_gris"
         android:inputType="textPassword"
         android:minHeight="48dp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -35,14 +43,72 @@
 
     <Button
         android:id="@+id/logInButton"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="48dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="50dp"
+        android:layout_marginEnd="30dp"
+        android:backgroundTint="@color/purple_700"
+        android:fontFamily="@font/poppins_regular"
+        android:padding="10dp"
         android:text="Ingresar"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editTextPassword" />
+
+    <TextView
+        android:id="@+id/textView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/poppins_regular"
+        android:text="E-mail"
+        app:layout_constraintBottom_toTopOf="@+id/editTextEmail"
+        app:layout_constraintStart_toStartOf="@+id/editTextEmail" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/poppins_regular"
+        android:text="Contraseña"
+        app:layout_constraintBottom_toTopOf="@+id/editTextPassword"
+        app:layout_constraintStart_toStartOf="@+id/editTextPassword" />
+
+    <TextView
+        android:id="@+id/textViewNoCuenta"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:fontFamily="@font/poppins_bold"
+        android:linksClickable="true"
+        android:text="@string/no_cuenta"
+        android:textColorLink="@color/teal_700"
+        app:layout_constraintStart_toStartOf="@+id/logInButton"
+        app:layout_constraintTop_toBottomOf="@+id/logInButton" />
+
+    <TextView
+        android:id="@+id/textViewOlvideContraseña"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:fontFamily="@font/poppins_bold"
+        android:linksClickable="true"
+        android:text="@string/olvide_contraseña"
+        android:textColorLink="@color/teal_700"
+        app:layout_constraintStart_toStartOf="@+id/textViewNoCuenta"
+        app:layout_constraintTop_toBottomOf="@+id/textViewNoCuenta" />
+
+    <TextView
+        android:id="@+id/textViewIniciaSesion"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="55dp"
+        android:fontFamily="@font/poppins_bold"
+        android:text="Inicia Sesión"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toTopOf="@+id/textView1"
+        app:layout_constraintStart_toStartOf="@+id/editTextEmail" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
