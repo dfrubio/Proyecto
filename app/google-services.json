@@ -1,0 +1,68 @@
+{
+  "project_info": {
+    "project_number": "452911830538",
+    "project_id": "sistemawsd",
+    "storage_bucket": "sistemawsd.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:452911830538:android:40d980e32e49b6a4a031f3",
+        "android_client_info": {
+          "package_name": "com.example.applicationtest"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "452911830538-7ru8co7h7moi1kbee3ajve67381r9nlu.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD5YDI-OpnsyXRGIXzqd16Etkx8lt0b5iw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "452911830538-7ru8co7h7moi1kbee3ajve67381r9nlu.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:452911830538:android:1347b689c5d36478a031f3",
+        "android_client_info": {
+          "package_name": "com.ucatolica.toffeecompaeroemocional"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "452911830538-7ru8co7h7moi1kbee3ajve67381r9nlu.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD5YDI-OpnsyXRGIXzqd16Etkx8lt0b5iw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "452911830538-7ru8co7h7moi1kbee3ajve67381r9nlu.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
