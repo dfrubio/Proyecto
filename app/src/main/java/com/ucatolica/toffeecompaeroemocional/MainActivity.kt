@@ -35,7 +35,6 @@ class MainActivity : AppCompatActivity() {
         textNoCuenta.setMovementMethod(LinkMovementMethod.getInstance())
         textOlvideContra.setMovementMethod(LinkMovementMethod.getInstance())
 
-        //Linkify.addLinks(textNoCuenta, "www.google.com")
 
     }
 
@@ -44,6 +43,8 @@ class MainActivity : AppCompatActivity() {
             if (it.isSuccessful){
                 val intent = Intent(this,Home::class.java)
                 startActivity(intent)
+            } else {
+                Toast.makeText(this, "Error al iniciar la sesión", Toast.LENGTH_LONG).show()
             }
         }
     }
