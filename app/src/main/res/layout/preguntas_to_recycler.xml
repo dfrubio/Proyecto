@@ -9,6 +9,7 @@
         android:id="@+id/tvPreguntaRecycler"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:fontFamily="@font/poppins_regular"
         android:text="TextView"
         android:textAlignment="center"
         app:layout_constraintBottom_toTopOf="@+id/ivPreguntaRecycler"

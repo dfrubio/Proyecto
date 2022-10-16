@@ -1,6 +1,6 @@
 package com.ucatolica.toffeecompaeroemocional
 
-import android.annotation.SuppressLint
+
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -10,23 +10,18 @@ import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.firestore.FirebaseFirestore
 
 class MainActivity : AppCompatActivity() {
-
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        val db = FirebaseFirestore.getInstance()
 
         val textEmail: EditText = findViewById(R.id.editTextEmail)
         val textPass: EditText = findViewById(R.id.editTextPassword)
         val logInButton = findViewById<Button>(R.id.logInButton)
         val textNoCuenta = findViewById<TextView>(R.id.textViewNoCuenta)
         val textOlvideContra = findViewById<TextView>(R.id.textViewOlvideContraseña)
-
 
         logInButton.setOnClickListener {
             if (textEmail.text.isNotEmpty() && textPass.text.isNotEmpty()) {
@@ -36,9 +31,8 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
-        textNoCuenta.setMovementMethod(LinkMovementMethod.getInstance())//Es para que los links de olvidé contraseña y crear cuenta funcionen
+        textNoCuenta.setMovementMethod(LinkMovementMethod.getInstance())//Es para que los links de "olvidé contraseña" y "crear cuenta funcionen"
         textOlvideContra.setMovementMethod(LinkMovementMethod.getInstance())
-
 
     }
 
@@ -50,6 +44,15 @@ class MainActivity : AppCompatActivity() {
             } else {
                 Toast.makeText(this, "Error al iniciar la sesión", Toast.LENGTH_LONG).show()
             }
+        }
+    }
+
+    public override fun onResume() {
+        super.onResume()
+        val currentUser = FirebaseAuth.getInstance().currentUser
+        if (currentUser != null) {
+            val intent = Intent(this, Home::class.java)
+            startActivity(intent)
         }
     }
 
