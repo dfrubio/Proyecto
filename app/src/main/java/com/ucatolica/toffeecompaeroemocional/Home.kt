@@ -15,7 +15,7 @@ import com.google.firebase.firestore.ktx.toObject
 
 class Home : AppCompatActivity() {
 
-    private val db = FirebaseFirestore.getInstance()
+    val db = FirebaseFirestore.getInstance()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -51,6 +51,5 @@ class Home : AppCompatActivity() {
             startActivity(Intent(this, Perfil::class.java))
         }
     }
-
 }
 
