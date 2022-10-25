@@ -1,30 +1,161 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="500dp"
+    app:cardCornerRadius="40dp"
+    android:background="@color/white"
+    android:layout_margin="10dp"
+    android:clickable="true"
+    android:focusable="true">
 
-    <TextView
-        android:id="@+id/tvPreguntaRecycler"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:fontFamily="@font/poppins_regular"
-        android:text="TextView"
-        android:textAlignment="center"
-        app:layout_constraintBottom_toTopOf="@+id/ivPreguntaRecycler"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+   <androidx.constraintlayout.widget.ConstraintLayout
+       android:layout_width="match_parent"
+       android:layout_height="match_parent">
 
-    <ImageView
-        android:id="@+id/ivPreguntaRecycler"
-        android:layout_width="200dp"
-        android:layout_height="150dp"
-        android:layout_marginTop="42dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvPreguntaRecycler"
-        android:background="@drawable/ic_test" />
+       <TextView
+           android:id="@+id/tvPreguntaRecycler"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:layout_margin="5dp"
+           android:fontFamily="@font/poppins_regular"
+           android:padding="10dp"
+           android:text="TextView"
+           android:textAlignment="center"
+           android:textSize="35sp"
+           app:layout_constraintBottom_toTopOf="@+id/slider"
+           app:layout_constraintEnd_toEndOf="parent"
+           app:layout_constraintStart_toStartOf="parent"
+           app:layout_constraintTop_toTopOf="parent" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+       <ImageView
+           android:id="@+id/imageView"
+           android:layout_width="60dp"
+           android:layout_height="60dp"
+           android:layout_marginEnd="10dp"
+           android:layout_marginBottom="30dp"
+           app:layout_constraintBottom_toBottomOf="parent"
+           app:layout_constraintEnd_toStartOf="@+id/imageView2"
+           app:layout_constraintStart_toStartOf="parent"
+           app:srcCompat="@drawable/nada" />
+
+       <ImageView
+           android:id="@+id/imageView2"
+           android:layout_width="60dp"
+           android:layout_height="60dp"
+           android:layout_marginStart="10dp"
+           android:layout_marginEnd="10dp"
+           app:layout_constraintEnd_toStartOf="@+id/imageView3"
+           app:layout_constraintStart_toEndOf="@+id/imageView"
+           app:layout_constraintTop_toTopOf="@+id/imageView"
+           app:srcCompat="@drawable/leve" />
+
+       <ImageView
+           android:id="@+id/imageView3"
+           android:layout_width="60dp"
+           android:layout_height="60dp"
+           android:layout_marginStart="10dp"
+           android:layout_marginEnd="10dp"
+           app:layout_constraintEnd_toStartOf="@+id/imageView4"
+           app:layout_constraintStart_toEndOf="@+id/imageView2"
+           app:layout_constraintTop_toTopOf="@+id/imageView2"
+           app:srcCompat="@drawable/moderado" />
+
+       <ImageView
+           android:id="@+id/imageView4"
+           android:layout_width="60dp"
+           android:layout_height="60dp"
+           android:layout_marginStart="10dp"
+           android:layout_marginEnd="10dp"
+           app:layout_constraintEnd_toStartOf="@+id/imageView5"
+           app:layout_constraintStart_toEndOf="@+id/imageView3"
+           app:layout_constraintTop_toTopOf="@+id/imageView3"
+           app:srcCompat="@drawable/severo" />
+
+       <!-- <a href="https://www.flaticon.com/free-icons/monster" title="monster icons">Monster icons created by Smashicons - Flaticon</a>
+       Línea para dar crédito a diseñador de los emojis de monstruos-->
+
+       <ImageView
+           android:id="@+id/imageView5"
+           android:layout_width="60dp"
+           android:layout_height="60dp"
+           app:layout_constraintEnd_toEndOf="parent"
+           app:layout_constraintStart_toEndOf="@+id/imageView4"
+           app:layout_constraintTop_toTopOf="@+id/imageView4"
+           app:srcCompat="@drawable/extremo" />
+
+       <TextView
+           android:id="@+id/tvNada"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:layout_marginBottom="2dp"
+           android:fontFamily="@font/poppins_regular"
+           android:text="Nada"
+           app:layout_constraintBottom_toTopOf="@+id/imageView"
+           app:layout_constraintEnd_toEndOf="@+id/imageView"
+           app:layout_constraintStart_toStartOf="@+id/imageView" />
+
+       <TextView
+           android:id="@+id/tvLeve"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:layout_marginBottom="2dp"
+           android:fontFamily="@font/poppins_regular"
+           android:text="Leve"
+           app:layout_constraintBottom_toTopOf="@+id/imageView2"
+           app:layout_constraintEnd_toEndOf="@+id/imageView2"
+           app:layout_constraintStart_toStartOf="@+id/imageView2" />
+
+       <TextView
+           android:id="@+id/tvModerado"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:layout_marginBottom="2dp"
+           android:fontFamily="@font/poppins_regular"
+           android:text="Moderado"
+           app:layout_constraintBottom_toTopOf="@+id/imageView3"
+           app:layout_constraintEnd_toEndOf="@+id/imageView3"
+           app:layout_constraintStart_toStartOf="@+id/imageView3" />
+
+       <TextView
+           android:id="@+id/tvSevero"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:layout_marginBottom="2dp"
+           android:fontFamily="@font/poppins_regular"
+           android:text="Severo"
+           app:layout_constraintBottom_toTopOf="@+id/imageView4"
+           app:layout_constraintEnd_toEndOf="@+id/imageView4"
+           app:layout_constraintStart_toStartOf="@+id/imageView4" />
+
+       <TextView
+           android:id="@+id/tvExtremo"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:layout_marginBottom="2dp"
+           android:fontFamily="@font/poppins_regular"
+           android:text="Extremo"
+           app:layout_constraintBottom_toTopOf="@+id/imageView5"
+           app:layout_constraintEnd_toEndOf="@+id/imageView5"
+           app:layout_constraintStart_toStartOf="@+id/imageView5" />
+
+       <com.google.android.material.slider.Slider
+           android:id="@+id/slider"
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:layout_marginHorizontal="20dp"
+           android:layout_marginBottom="20dp"
+           android:stepSize="1.0"
+           android:valueFrom="0.0"
+           android:valueTo="4.0"
+           app:layout_constraintBottom_toTopOf="@id/imageView"
+           app:thumbColor="@color/teal_700"
+           app:tickColor="@color/black"
+           app:trackColor="@color/teal_200"
+           tools:layout_editor_absoluteX="20dp" />
+
+
+   </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.cardview.widget.CardView>

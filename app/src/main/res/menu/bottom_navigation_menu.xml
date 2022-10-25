@@ -10,12 +10,9 @@
         android:enabled="true"
         android:icon="@drawable/ic_test"
         android:title="Diary"/>
-
     <item
         android:id="@+id/page_3"
         android:enabled="true"
         android:icon="@drawable/ic_test"
         android:title="Q and A"/>
-
-
 </menu>
