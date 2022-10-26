@@ -9,13 +9,17 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
+import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import com.google.firebase.auth.FirebaseAuth
 
 class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        //val splashScreen = installSplashScreen()
+        //setTheme(R.style.Theme_ToffeeCompañeroEmocional)
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        //splashScreen.setKeepOnScreenCondition{true}
 
         val textEmail: EditText = findViewById(R.id.editTextEmail)
         val textPass: EditText = findViewById(R.id.editTextPassword)
@@ -55,5 +59,4 @@ class MainActivity : AppCompatActivity() {
             startActivity(intent)
         }
     }
-
 }
