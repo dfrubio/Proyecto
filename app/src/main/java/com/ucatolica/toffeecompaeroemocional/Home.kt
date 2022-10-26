@@ -10,6 +10,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.LayoutManager
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.firebase.firestore.*
 import com.google.firebase.firestore.ktx.toObject
 
@@ -25,7 +26,7 @@ class Home : AppCompatActivity() {
         val btnPregunta : Button = findViewById(R.id.buttonPregunta)
         val listaPreguntas = mutableListOf<Pregunta>()
         val rvPreguntas : RecyclerView = findViewById(R.id.recyclerPregunta)
-        val btnPerfil : Button = findViewById(R.id.bttnPerfil)
+        val bttnNav : BottomNavigationView = findViewById(R.id.bottom_navigation)
 
         btnPregunta.setOnClickListener {
             db.collection("preguntas")
@@ -47,8 +48,19 @@ class Home : AppCompatActivity() {
 
 
 
-        btnPerfil.setOnClickListener {
-            startActivity(Intent(this, Perfil::class.java))
+        bttnNav.setOnNavigationItemReselectedListener {
+            when (it.itemId) {
+                R.id.page_1 ->{
+                    startActivity(Intent(this, Perfil::class.java))
+                    return@setOnNavigationItemReselectedListener
+                }
+                R.id.page_2 ->{
+
+                }
+                R.id.page_3->{
+
+                }
+            }
         }
     }
 }
