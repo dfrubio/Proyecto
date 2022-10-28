@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="500dp"
     app:cardCornerRadius="40dp"
-    android:background="@color/white"
+    app:cardBackgroundColor="@color/white"
     android:layout_margin="10dp"
     android:clickable="true"
     android:focusable="true">
@@ -22,6 +22,7 @@
            android:fontFamily="@font/poppins_regular"
            android:padding="10dp"
            android:text="TextView"
+           android:textColor="@color/black"
            android:textAlignment="center"
            android:textSize="35sp"
            app:layout_constraintBottom_toTopOf="@+id/slider"
@@ -30,59 +31,62 @@
            app:layout_constraintTop_toTopOf="parent" />
 
        <ImageView
-           android:id="@+id/imageView"
+           android:id="@+id/imageViewNada"
            android:layout_width="60dp"
            android:layout_height="60dp"
+           android:layout_marginStart="10dp"
            android:layout_marginEnd="10dp"
            android:layout_marginBottom="30dp"
            app:layout_constraintBottom_toBottomOf="parent"
-           app:layout_constraintEnd_toStartOf="@+id/imageView2"
+           app:layout_constraintEnd_toStartOf="@+id/imageViewLeve"
            app:layout_constraintStart_toStartOf="parent"
            app:srcCompat="@drawable/nada" />
 
+
        <ImageView
-           android:id="@+id/imageView2"
+           android:id="@+id/imageViewLeve"
            android:layout_width="60dp"
            android:layout_height="60dp"
            android:layout_marginStart="10dp"
            android:layout_marginEnd="10dp"
-           app:layout_constraintEnd_toStartOf="@+id/imageView3"
-           app:layout_constraintStart_toEndOf="@+id/imageView"
-           app:layout_constraintTop_toTopOf="@+id/imageView"
+           app:layout_constraintEnd_toStartOf="@+id/imageViewModerado"
+           app:layout_constraintStart_toEndOf="@+id/imageViewNada"
+           app:layout_constraintTop_toTopOf="@+id/imageViewNada"
            app:srcCompat="@drawable/leve" />
 
        <ImageView
-           android:id="@+id/imageView3"
+           android:id="@+id/imageViewModerado"
            android:layout_width="60dp"
            android:layout_height="60dp"
            android:layout_marginStart="10dp"
            android:layout_marginEnd="10dp"
-           app:layout_constraintEnd_toStartOf="@+id/imageView4"
-           app:layout_constraintStart_toEndOf="@+id/imageView2"
-           app:layout_constraintTop_toTopOf="@+id/imageView2"
+           app:layout_constraintEnd_toStartOf="@+id/imageViewSevero"
+           app:layout_constraintStart_toEndOf="@+id/imageViewLeve"
+           app:layout_constraintTop_toTopOf="@+id/imageViewLeve"
            app:srcCompat="@drawable/moderado" />
 
        <ImageView
-           android:id="@+id/imageView4"
+           android:id="@+id/imageViewSevero"
            android:layout_width="60dp"
            android:layout_height="60dp"
            android:layout_marginStart="10dp"
            android:layout_marginEnd="10dp"
-           app:layout_constraintEnd_toStartOf="@+id/imageView5"
-           app:layout_constraintStart_toEndOf="@+id/imageView3"
-           app:layout_constraintTop_toTopOf="@+id/imageView3"
+           app:layout_constraintEnd_toStartOf="@+id/imageViewExtremo"
+           app:layout_constraintStart_toEndOf="@+id/imageViewModerado"
+           app:layout_constraintTop_toTopOf="@+id/imageViewModerado"
            app:srcCompat="@drawable/severo" />
 
        <!-- <a href="https://www.flaticon.com/free-icons/monster" title="monster icons">Monster icons created by Smashicons - Flaticon</a>
        Línea para dar crédito a diseñador de los emojis de monstruos-->
 
        <ImageView
-           android:id="@+id/imageView5"
+           android:id="@+id/imageViewExtremo"
            android:layout_width="60dp"
            android:layout_height="60dp"
+           android:layout_marginEnd="10dp"
            app:layout_constraintEnd_toEndOf="parent"
-           app:layout_constraintStart_toEndOf="@+id/imageView4"
-           app:layout_constraintTop_toTopOf="@+id/imageView4"
+           app:layout_constraintStart_toEndOf="@+id/imageViewSevero"
+           app:layout_constraintTop_toTopOf="@+id/imageViewSevero"
            app:srcCompat="@drawable/extremo" />
 
        <TextView
@@ -92,9 +96,10 @@
            android:layout_marginBottom="2dp"
            android:fontFamily="@font/poppins_regular"
            android:text="Nada"
-           app:layout_constraintBottom_toTopOf="@+id/imageView"
-           app:layout_constraintEnd_toEndOf="@+id/imageView"
-           app:layout_constraintStart_toStartOf="@+id/imageView" />
+           android:textColor="@color/black"
+           app:layout_constraintBottom_toTopOf="@+id/imageViewNada"
+           app:layout_constraintEnd_toEndOf="@+id/imageViewNada"
+           app:layout_constraintStart_toStartOf="@+id/imageViewNada" />
 
        <TextView
            android:id="@+id/tvLeve"
@@ -103,9 +108,10 @@
            android:layout_marginBottom="2dp"
            android:fontFamily="@font/poppins_regular"
            android:text="Leve"
-           app:layout_constraintBottom_toTopOf="@+id/imageView2"
-           app:layout_constraintEnd_toEndOf="@+id/imageView2"
-           app:layout_constraintStart_toStartOf="@+id/imageView2" />
+           android:textColor="@color/black"
+           app:layout_constraintBottom_toTopOf="@+id/imageViewLeve"
+           app:layout_constraintEnd_toEndOf="@+id/imageViewLeve"
+           app:layout_constraintStart_toStartOf="@+id/imageViewLeve" />
 
        <TextView
            android:id="@+id/tvModerado"
@@ -114,9 +120,10 @@
            android:layout_marginBottom="2dp"
            android:fontFamily="@font/poppins_regular"
            android:text="Moderado"
-           app:layout_constraintBottom_toTopOf="@+id/imageView3"
-           app:layout_constraintEnd_toEndOf="@+id/imageView3"
-           app:layout_constraintStart_toStartOf="@+id/imageView3" />
+           android:textColor="@color/black"
+           app:layout_constraintBottom_toTopOf="@+id/imageViewModerado"
+           app:layout_constraintEnd_toEndOf="@+id/imageViewModerado"
+           app:layout_constraintStart_toStartOf="@+id/imageViewModerado" />
 
        <TextView
            android:id="@+id/tvSevero"
@@ -125,9 +132,10 @@
            android:layout_marginBottom="2dp"
            android:fontFamily="@font/poppins_regular"
            android:text="Severo"
-           app:layout_constraintBottom_toTopOf="@+id/imageView4"
-           app:layout_constraintEnd_toEndOf="@+id/imageView4"
-           app:layout_constraintStart_toStartOf="@+id/imageView4" />
+           android:textColor="@color/black"
+           app:layout_constraintBottom_toTopOf="@+id/imageViewSevero"
+           app:layout_constraintEnd_toEndOf="@+id/imageViewSevero"
+           app:layout_constraintStart_toStartOf="@+id/imageViewSevero" />
 
        <TextView
            android:id="@+id/tvExtremo"
@@ -136,9 +144,10 @@
            android:layout_marginBottom="2dp"
            android:fontFamily="@font/poppins_regular"
            android:text="Extremo"
-           app:layout_constraintBottom_toTopOf="@+id/imageView5"
-           app:layout_constraintEnd_toEndOf="@+id/imageView5"
-           app:layout_constraintStart_toStartOf="@+id/imageView5" />
+           android:textColor="@color/black"
+           app:layout_constraintBottom_toTopOf="@+id/imageViewExtremo"
+           app:layout_constraintEnd_toEndOf="@+id/imageViewExtremo"
+           app:layout_constraintStart_toStartOf="@+id/imageViewExtremo" />
 
        <com.google.android.material.slider.Slider
            android:id="@+id/slider"
@@ -147,13 +156,14 @@
            android:layout_marginHorizontal="20dp"
            android:layout_marginBottom="20dp"
            android:stepSize="1.0"
-           android:valueFrom="0.0"
-           android:valueTo="4.0"
-           app:layout_constraintBottom_toTopOf="@id/imageView"
+           android:valueFrom="1"
+           android:valueTo="5"
+           app:layout_constraintBottom_toTopOf="@id/imageViewNada"
+           app:layout_constraintEnd_toStartOf="@+id/tvExtremo"
+           app:layout_constraintStart_toStartOf="parent"
            app:thumbColor="@color/teal_700"
            app:tickColor="@color/black"
-           app:trackColor="@color/teal_200"
-           tools:layout_editor_absoluteX="20dp" />
+           app:trackColor="@color/teal_200" />
 
 
    </androidx.constraintlayout.widget.ConstraintLayout>
