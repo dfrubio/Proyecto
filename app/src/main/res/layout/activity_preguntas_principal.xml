@@ -35,6 +35,7 @@
         android:padding="5dp"
         android:layout_marginBottom="8dp"
         android:text="Enviar Respuestas"
+        android:visibility="invisible"
         app:layout_constraintBottom_toTopOf="@+id/linearLayout"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
