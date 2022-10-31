@@ -38,7 +38,7 @@ class PreguntaAdapter(var listaPreguntas: MutableList<Pregunta>, private val res
             val primeraRespuesta = listOf<Float>(adapterPosition.toFloat(),slider.value)
             respuestasPreguntas(primeraRespuesta)
             setBackground(nada, leve, moderado, severo, extremo)
-            
+
             slider.addOnChangeListener { slider, value, fromUser ->
                 when(value){
                 1f -> setBackground(nada, leve, moderado, severo, extremo)

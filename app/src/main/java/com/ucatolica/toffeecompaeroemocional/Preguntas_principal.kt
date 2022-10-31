@@ -81,7 +81,9 @@ class Preguntas_principal : AppCompatActivity() {
                 Log.d("Preguntas Lista", "Lista Aleatoria: $listaPregAleatoria")
                 Log.d("Preguntas Lista", "Lista Suicida: $listaPregSuicida")
                 listaPreguntas = listaPregDiaria
-                listaPreguntas.addAll(listaPregAleatoria)
+                listaPregAleatoria.shuffle()
+                listaPreguntas.add(listaPregAleatoria[0])
+                listaPreguntas.add(listaPregAleatoria[1])
                 for (i:Int in 0 .. listaPreguntas.size-1){
                     listaRespuestas.add(0f)
                 }
