@@ -28,9 +28,23 @@
 
     </com.facebook.shimmer.ShimmerFrameLayout>
 
+    <Button
+        android:id="@+id/btnSubirRespuestas"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="5dp"
+        android:layout_marginBottom="8dp"
+        android:text="Enviar Respuestas"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
     <LinearLayout
+        android:id="@+id/linearLayout"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_margin="0dp"
         android:orientation="horizontal"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -42,7 +56,8 @@
             android:layout_height="wrap_content"
             app:menu = "@menu/bottom_navigation_menu"
             app:labelVisibilityMode="labeled"/>
-
     </LinearLayout>
+
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

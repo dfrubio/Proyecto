@@ -1,0 +1,87 @@
+[33mcommit ec5edd2ea4f91c210bec8ddf0fa0f427b1f294f7[m[33m ([m[1;36mHEAD -> [m[1;32mmain[m[33m)[m
+Merge: 80a3d2e 033c95c
+Author: dfrubio <dfrubio62ucatolica.edu.co>
+Date:   Wed Oct 26 16:41:19 2022 -0500
+
+    Merge branch 'main' of https://github.com/dfrubio/Proyecto
+    
+    # Conflicts:
+    #       app/src/main/java/com/ucatolica/toffeecompaeroemocional/Home.kt
+
+[33mcommit 80a3d2e988900a96c75eb9bbb2c2dae59f28c8d9[m
+Author: dfrubio <dfrubio62ucatolica.edu.co>
+Date:   Wed Oct 26 16:35:40 2022 -0500
+
+    Cambios realizados
+
+[33mcommit 033c95ca87e4b736de551009b4354b0f9f730acf[m
+Author: ccgomez97 <ccgomez97@ucatolica.edu.co>
+Date:   Tue Oct 25 23:52:35 2022 -0500
+
+    Color de texto en EditText
+
+[33mcommit 4d157f67b52bed98ac15c523845f3719dcb88f8d[m
+Author: ccgomez97 <ccgomez97@ucatolica.edu.co>
+Date:   Tue Oct 25 22:52:08 2022 -0500
+
+    Splash screen y Login Screen
+
+[33mcommit 2b00b7a8fcaf021407ff521421fbe57f63b80296[m
+Author: ccgomez97 <ccgomez97@ucatolica.edu.co>
+Date:   Tue Oct 25 01:01:06 2022 -0500
+
+    Shimmer load
+
+[33mcommit 2ce3876df0de448a4ebe23ac2d8f3b810e13962b[m
+Author: ccgomez97 <ccgomez97@ucatolica.edu.co>
+Date:   Tue Oct 25 00:59:28 2022 -0500
+
+    Shimmer load
+
+[33mcommit 2857cab8b7ea4417a58d3654901955923828a5fe[m
+Author: dfrubio <dfrubio62ucatolica.edu.co>
+Date:   Mon Oct 17 16:28:44 2022 -0500
+
+    Font de poppins por defecto
+
+[33mcommit c8d7d25dbcb64df2374e9ba63d5d3c41a09dddc2[m
+Author: dfrubio <dfrubio62ucatolica.edu.co>
+Date:   Mon Oct 17 16:03:00 2022 -0500
+
+    Navigation bar
+
+[33mcommit a877d04792ea45d3ffbfae3cd5696824884fc90e[m
+Author: ccgomez97 <ccgomez97@ucatolica.edu.co>
+Date:   Sun Oct 16 17:27:05 2022 -0500
+
+    Mantener sesión iniciada
+
+[33mcommit 0c6e0df1934daf2efcb054fd1e67ebed857ec082[m
+Author: ccgomez97 <ccgomez97@ucatolica.edu.co>
+Date:   Sun Oct 16 13:05:06 2022 -0500
+
+    Recycler views despliegan preguntas
+
+[33mcommit a5daf94e81f12f410ff76d0999254474a4f83ad9[m
+Author: ccgomez97 <ccgomez97@ucatolica.edu.co>
+Date:   Sun Oct 16 01:59:19 2022 -0500
+
+    merch all
+
+[33mcommit 7303f02797fb3c76de86a61f5ded621d6ba7abd8[m
+Author: ccgomez97 <ccgomez97@ucatolica.edu.co>
+Date:   Thu Oct 13 23:09:45 2022 -0500
+
+    Lectura de preguntas básica
+
+[33mcommit 0e022951b0c45a3863bdfccaf54c43055325289f[m
+Author: ccgomez97 <ccgomez97@ucatolica.edu.co>
+Date:   Thu Oct 13 18:32:48 2022 -0500
+
+    Inicio se sesión estilizado
+
+[33mcommit 9387bed785e86b363bc3100f0e95dcabcad428b6[m[33m ([m[1;32mbackup-main[m[33m)[m
+Author: dfrubio <dfrubio62ucatolica.edu.co>
+Date:   Wed Oct 12 21:09:25 2022 -0500
+
+    first commit
