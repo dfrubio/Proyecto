@@ -1,5 +1,6 @@
 package com.ucatolica.toffeecompaeroemocional
 
+import android.content.Intent
 import android.graphics.ColorFilter
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -11,6 +12,8 @@ import androidx.core.view.isVisible
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.facebook.shimmer.ShimmerFrameLayout
+import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.google.android.material.navigation.NavigationView
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.ServerTimestamp
@@ -38,6 +41,17 @@ class Preguntas_principal : AppCompatActivity() {
         val container = findViewById<ShimmerFrameLayout>(R.id.shimmer_view_container)
         val btnSubirRespuestas: Button = findViewById(R.id.btnSubirRespuestas)
         val currentUser = FirebaseAuth.getInstance().currentUser
+        val bttnNavigationView: BottomNavigationView = findViewById(R.id.bottom_navigation)
+        bttnNavigationView.setOnNavigationItemSelectedListener{
+            when(it.itemId){
+                R.id.perfil -> {
+                    val intent = Intent(this, Perfil::class.java)
+                    startActivity(intent)
+                    true
+                }
+                else -> false
+            }
+        }
 
         container.startShimmer()
         cargarPreguntas()
