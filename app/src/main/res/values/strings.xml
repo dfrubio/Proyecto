@@ -2,4 +2,7 @@
     <string name="app_name">Toffee compañero emocional</string>
     <string name="no_cuenta"><a href="https://sistemawsd.web.app/">No tengo cuenta</a></string>
     <string name="olvide_contraseña"><a href="https://sistemawsd.web.app/">Olvidé mi contraseña</a></string>
+    <string name="bttnTextPreguntas">Preguntas</string>
+    <string name="textModificarInformacion">Para cambiar tu información personal, accede al sistema WSD</string>
+    <string name="notificaciones">Notificaciones</string>
 </resources>

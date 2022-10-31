@@ -1,18 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
-        android:id="@+id/page_1"
+        android:id="@+id/tienda"
         android:enabled="true"
-        android:icon="@drawable/ic_test"
-        android:title="Rewards"/>
+        android:icon="@drawable/tienda"
+        android:title="Tienda"/>
     <item
-        android:id="@+id/page_2"
+        android:id="@+id/diario"
         android:enabled="true"
-        android:icon="@drawable/ic_test"
-        android:title="Diary"/>
+        android:icon="@drawable/diario"
+        android:title="Diario"/>
     <item
-        android:id="@+id/page_3"
+        android:id="@+id/preguntas"
         android:enabled="true"
-        android:icon="@drawable/ic_test"
-        android:title="Q and A"/>
+        android:icon="@drawable/preguntas"
+        android:title="Preguntas"/>
+    <item
+        android:id="@+id/perfil"
+        android:enabled="true"
+        android:icon="@drawable/perfil"
+        android:title="Perfil"/>
 </menu>

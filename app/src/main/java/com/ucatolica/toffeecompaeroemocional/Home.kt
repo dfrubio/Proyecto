@@ -21,35 +21,8 @@ class Home : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
 
-        val textPregunta : TextView = findViewById(R.id.textViewPregunta)
-        val btnPregunta : Button = findViewById(R.id.buttonPregunta)
-        val listaPreguntas = mutableListOf<Pregunta>()
-        val rvPreguntas : RecyclerView = findViewById(R.id.recyclerPregunta)
-        val btnPerfil : Button = findViewById(R.id.bttnPerfil)
-
-        btnPregunta.setOnClickListener {
-            db.collection("preguntas")
-                .get()
-                .addOnSuccessListener { result ->
-                    for (document in result) {
-                        val preg = document.toObject<Pregunta>()
-                        listaPreguntas.add(preg)
-                        Log.d("Preguntas Lista", "Dentro del botón: $listaPreguntas")
-                    }
-                    rvPreguntas.layoutManager = LinearLayoutManager(this)
-                    rvPreguntas.adapter = PreguntaAdapter(listaPreguntas)
-                }
-                .addOnFailureListener { exception ->
-                    Log.d("Preguntas", "Error getting documents: $exception", exception)
-                }
-            }
-        Log.d("Preguntas Lista ", "Fuera del botón : $listaPreguntas")
-
-
-
-        btnPerfil.setOnClickListener {
-            startActivity(Intent(this, Perfil::class.java))
-        }
+        val btnPreguntas: Button = findViewById(R.id.buttonPreguntas)
+        btnPreguntas.setOnClickListener{startActivity(Intent(this,Preguntas_principal::class.java))}
     }
 }
 

@@ -1,5 +1,6 @@
 package com.ucatolica.toffeecompaeroemocional
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -7,6 +8,7 @@ import android.view.View
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.facebook.shimmer.ShimmerFrameLayout
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.ktx.toObject
 
@@ -21,6 +23,8 @@ class Preguntas_principal : AppCompatActivity() {
         val container = findViewById<ShimmerFrameLayout>(R.id.shimmer_view_container)
         container.startShimmer()
         cargarPreguntas()
+        setupBottomMenu()
+
     }
 
     fun cargarPreguntas(){
@@ -45,5 +49,19 @@ class Preguntas_principal : AppCompatActivity() {
             .addOnFailureListener { exception ->
                 Log.d("Preguntas", "Error getting documents: $exception", exception)
             }
+
+    }
+
+    private fun setupBottomMenu(){
+        val bottomNavigationView = findViewById<BottomNavigationView>(R.id.bottom_navigation)
+        bottomNavigationView.setOnNavigationItemSelectedListener { item ->
+            when (item.itemId) {
+                R.id.perfil -> {
+                    startActivity(Intent(this, Perfil::class.java))
+                    true
+                }
+                else -> false
+            }
+        }
     }
 }
