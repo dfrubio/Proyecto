@@ -1,4 +1,7 @@
 package com.ucatolica.toffeecompaeroemocional
 
 
-data class Respuesta (var position: Int= 0, var respuesta: Float= 0f)
+import java.util.*
+
+
+data class Respuesta(var pregunta: String?="", var idPregunta: String?="", var respuesta: Float?= 0f, var fecha: java.util.Date = Calendar.getInstance().time )

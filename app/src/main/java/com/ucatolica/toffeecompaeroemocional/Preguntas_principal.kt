@@ -1,34 +1,57 @@
 package com.ucatolica.toffeecompaeroemocional
 
+import android.graphics.ColorFilter
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
-import android.util.MutableFloat
 import android.view.View
+import android.widget.Button
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.facebook.shimmer.ShimmerFrameLayout
-import com.google.firebase.database.MutableData
 import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.firestore.ServerTimestamp
 import com.google.firebase.firestore.ktx.toObject
+import com.google.protobuf.Empty
+import java.util.Calendar
+
+import java.util.Date
+import kotlin.system.measureTimeMillis
+
 
 class Preguntas_principal : AppCompatActivity() {
 
     val db = FirebaseFirestore.getInstance()
-    val listaRespuestas = mutableListOf<Respuesta>()
+    val listaRespuestas = mutableListOf<Float>()
+    val listaPreguntas = mutableListOf<Pregunta>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_preguntas_principal)
 
         val container = findViewById<ShimmerFrameLayout>(R.id.shimmer_view_container)
+        val btnSubirRespuestas: Button = findViewById(R.id.btnSubirRespuestas)
         container.startShimmer()
         cargarPreguntas()
+
+        btnSubirRespuestas.setOnClickListener {
+            val ingertoPrueba = Respuesta()
+
+            for (n: Int in 0..listaPreguntas.size-1){
+                ingertoPrueba.pregunta = listaPreguntas[n].pregunta
+                ingertoPrueba.idPregunta = listaPreguntas[n].idPregunta
+                ingertoPrueba.respuesta = listaRespuestas[n]
+                ingertoPrueba.fecha = Calendar.getInstance().time
+                db.collection("respuestasAndroid").add(ingertoPrueba).addOnSuccessListener {
+                    Log.d("Subida", "Respuestas subidas con éxito $ingertoPrueba")
+                }
+            }
+        }
     }
 
     fun cargarPreguntas(){
-        val listaPreguntas = mutableListOf<Pregunta>()
+
         val rvPreguntas : RecyclerView = findViewById(R.id.recyclerPregunta)
         val container = findViewById<ShimmerFrameLayout>(R.id.shimmer_view_container)
 
@@ -38,6 +61,7 @@ class Preguntas_principal : AppCompatActivity() {
                 for (document in result) {
                     val preg = document.toObject<Pregunta>()
                     listaPreguntas.add(preg)
+                    listaRespuestas.add(0f)
                     Log.d("Preguntas Lista", "Dentro del botón: $listaPreguntas")
                 }
                 container.stopShimmer()
@@ -52,13 +76,24 @@ class Preguntas_principal : AppCompatActivity() {
     }
 
     fun respuestasPreguntas( respuesta: List<Float>) {
-        val objeto = Respuesta()
-        objeto.respuesta = respuesta[1]
-        objeto.position = respuesta[0].toInt()
-       listaRespuestas.add(objeto)
-       //listaRespuestas.getOrElse(respuesta[0].toInt())
 
-        Toast.makeText(this, "$listaRespuestas", Toast.LENGTH_SHORT).show()
-        Log.d("Respuestas", "Lista de respuestas $listaRespuestas")
+        listaRespuestas[respuesta[0].toInt()] = respuesta[1]
+        if (listaRespuestas.contains(0f)){
+            inhabilitarBoton()
+        }else{
+            habilitarBoton()
+        }
+
+        Log.d("Respuestas", "Lista test $listaRespuestas")
+    }
+
+    private fun habilitarBoton() {
+        val btnSubirRespuestas: Button = findViewById(R.id.btnSubirRespuestas)
+        btnSubirRespuestas.isClickable = true
+    }
+
+    private fun inhabilitarBoton() {
+        val btnSubirRespuestas: Button = findViewById(R.id.btnSubirRespuestas)
+        btnSubirRespuestas.isClickable = false
     }
 }

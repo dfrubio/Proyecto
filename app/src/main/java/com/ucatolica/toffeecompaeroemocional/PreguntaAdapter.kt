@@ -31,7 +31,7 @@ class PreguntaAdapter(var listaPreguntas: MutableList<Pregunta>, private val res
         private val moderado: ImageView = itemView.findViewById(R.id.imageViewModerado)
         private val severo: ImageView = itemView.findViewById(R.id.imageViewSevero)
         private val extremo: ImageView = itemView.findViewById(R.id.imageViewExtremo)
-        //private val variablePrueba: Respuesta = [0,0f]
+
 
 
         fun render(preg: Pregunta,  respuestasPreguntas: (List<Float>) -> Unit){
@@ -45,16 +45,14 @@ class PreguntaAdapter(var listaPreguntas: MutableList<Pregunta>, private val res
                 4f -> setBackground(severo, nada, leve, moderado, extremo)
                 5f -> setBackground(extremo, nada, leve, moderado, severo)
             }
-                //respuestaObjeto.respuesta = value
-                //respuestaObjeto.position = adapterPosition
+
                 val variableTest = listOf<Float>(adapterPosition.toFloat(),value)
                 respuestasPreguntas(variableTest)
 
             } //Funciona el listener del slider
 
             nada.setOnClickListener { setBackground(nada, leve, moderado, severo, extremo)
-                slider.value = 1F //puedo setear el valor del slider
-                Toast.makeText(nada.context, "$adapterPosition", Toast.LENGTH_SHORT).show()}
+                slider.value = 1F} //puedo setear el valor del slider
             leve.setOnClickListener { setBackground(leve, nada, moderado, severo, extremo)
                 slider.value = 2F }
             moderado.setOnClickListener { setBackground(moderado, nada, leve, severo, extremo)
