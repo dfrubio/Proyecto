@@ -7,12 +7,30 @@
     tools:context=".Home">
 
 
-    <Button
-        android:id="@+id/buttonPreguntas"
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="0dp"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <com.google.android.material.bottomnavigation.BottomNavigationView
+            android:id="@+id/bottom_navigationHome"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:menu = "@menu/bottom_navigation_menu"
+            app:labelVisibilityMode="labeled"/>
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="186dp"
-        android:text="@string/bttnTextPreguntas"
+        android:layout_marginTop="200dp"
+        android:text="Próximamente :)"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />

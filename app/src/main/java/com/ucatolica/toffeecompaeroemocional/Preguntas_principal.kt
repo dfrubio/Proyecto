@@ -42,10 +42,16 @@ class Preguntas_principal : AppCompatActivity() {
         val btnSubirRespuestas: Button = findViewById(R.id.btnSubirRespuestas)
         val currentUser = FirebaseAuth.getInstance().currentUser
         val bttnNavigationView: BottomNavigationView = findViewById(R.id.bottom_navigation)
+        bttnNavigationView.selectedItemId = R.id.preguntas_menu
         bttnNavigationView.setOnNavigationItemSelectedListener{
             when(it.itemId){
-                R.id.perfil -> {
+                R.id.perfil_menu -> {
                     val intent = Intent(this, Perfil::class.java)
+                    startActivity(intent)
+                    true
+                }
+                R.id.tienda_menu -> {
+                    val intent = Intent(this, Home::class.java)
                     startActivity(intent)
                     true
                 }

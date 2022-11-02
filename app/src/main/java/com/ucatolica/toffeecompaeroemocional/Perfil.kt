@@ -1,10 +1,12 @@
 package com.ucatolica.toffeecompaeroemocional
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.widget.Button
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 
@@ -39,6 +41,23 @@ class Perfil : AppCompatActivity() {
             }.addOnFailureListener { exception ->
                 Log.w("Valores", "Error getting documents: ", exception)
             }
+
+        //Menu Footer
+        val bttnNavigationView: BottomNavigationView = findViewById(R.id.bottom_navigationHome)
+        bttnNavigationView.selectedItemId = R.id.perfil_menu
+        bttnNavigationView.setOnNavigationItemSelectedListener{
+            when(it.itemId){
+                R.id.tienda_menu -> {
+                    startActivity(Intent(this, Home::class.java))
+                    true
+                }
+                R.id.preguntas_menu -> {
+                    startActivity(Intent(this, Preguntas_principal::class.java))
+                    true
+                }
+                else -> false
+            }
+        }
     }
 
     fun mostrarResultado(hora:Int, minuto:Int){
