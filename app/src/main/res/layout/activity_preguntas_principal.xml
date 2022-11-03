@@ -6,23 +6,32 @@
     android:layout_height="match_parent"
     tools:context=".Preguntas_principal">
 
+    <ImageView
+        android:id="@+id/imageViewLogoPreguntas"
+        android:layout_width="130dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/logo" />
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerPregunta"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginTop="40dp"/>
+        app:layout_constraintTop_toBottomOf="@id/imageViewLogoPreguntas"
+        android:layout_marginTop="20dp"/>
 
     <com.facebook.shimmer.ShimmerFrameLayout
         android:id="@+id/shimmer_view_container"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_marginTop="40dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="@id/recyclerPregunta">
 
         <include layout="@layout/preguntas_to_recycler_shimmer"/>
 

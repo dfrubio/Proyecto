@@ -8,7 +8,9 @@ import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.ktx.Firebase
 
 class Perfil : AppCompatActivity() {
 
@@ -22,6 +24,7 @@ class Perfil : AppCompatActivity() {
         val textNombre: TextView = findViewById(R.id.textNombre)
         val textCorreoUsuario: TextView = findViewById(R.id.textCorreo)
         val textNombrePsicologo : TextView = findViewById(R.id.textPsicologo)
+        val btnLogOut: Button = findViewById(R.id.btnLogOut)
 
         val currentUser = FirebaseAuth.getInstance().currentUser
         bttnHora = findViewById(R.id.button)
@@ -57,6 +60,13 @@ class Perfil : AppCompatActivity() {
                 }
                 else -> false
             }
+        }
+
+        //Botón para desloguearse
+        btnLogOut.setOnClickListener {
+            Firebase.auth.signOut()
+            finish()
+            startActivity(Intent(this,MainActivity::class.java))
         }
     }
 

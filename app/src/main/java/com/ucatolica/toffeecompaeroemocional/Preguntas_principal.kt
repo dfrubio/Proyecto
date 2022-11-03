@@ -73,8 +73,10 @@ class Preguntas_principal : AppCompatActivity() {
 
                 db.collection("respuestasAndroid").add(ingertoPrueba).addOnSuccessListener {
                     Log.d("Subida", "Respuestas subidas con éxito $ingertoPrueba")
-                }
+                    Toast.makeText(this, "Respuestas subidas con éxito \uD83E\uDD20", Toast.LENGTH_SHORT).show()
+                }.addOnFailureListener { Toast.makeText(this, "Ha habido un error, comprueba tu conexión", Toast.LENGTH_SHORT).show() }
             }
+
         }
     }
 

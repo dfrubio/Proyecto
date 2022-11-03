@@ -11,4 +11,5 @@
     <color name="placeholder_bg">#dddddd</color>
     <color name="transparente">#00FFFFFF</color>
     <color name="semi_transparente">#1AFFFFFF</color>
+    <color name="red">#b23b3b</color>
     </resources>
