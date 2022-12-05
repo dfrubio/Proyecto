@@ -1,16 +1,21 @@
 package com.ucatolica.toffeecompaeroemocional
 
+import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.widget.Button
 import android.widget.TextView
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.cardview.widget.CardView
+import androidx.core.view.isVisible
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.ktx.Firebase
+import com.ucatolica.toffeecompaeroemocional.oneDayApplication.Companion.prefs
 
 class Perfil : AppCompatActivity() {
 
@@ -25,6 +30,15 @@ class Perfil : AppCompatActivity() {
         val textCorreoUsuario: TextView = findViewById(R.id.textCorreo)
         val textNombrePsicologo : TextView = findViewById(R.id.textPsicologo)
         val btnLogOut: Button = findViewById(R.id.btnLogOut)
+        val cardPerfil: CardView = findViewById(R.id.cardLogin)
+        val cardVariables: CardView = findViewById(R.id.cardVariables)
+
+        val indiceDepresion: TextView = findViewById(R.id.tvIndiceDepresion)
+        val indiceAnsiedad: TextView = findViewById(R.id.tvIndiceAnsiedad)
+
+        indiceDepresion.text = "Tu índice de depresión está en: ${prefs.getIndiceDepresion()}"
+        indiceAnsiedad.text = "Tu índice de ansiedad está en: ${prefs.getIndiceAnsiedad()}"
+
 
         val currentUser = FirebaseAuth.getInstance().currentUser
         bttnHora = findViewById(R.id.button)
@@ -58,6 +72,11 @@ class Perfil : AppCompatActivity() {
                     startActivity(Intent(this, Preguntas_principal::class.java))
                     true
                 }
+                //Se retira el start activity de esta actividad para evitar reactivarla
+                R.id.diario_menu -> {
+                    startActivity(Intent(this, Diario::class.java))
+                    true
+                }
                 else -> false
             }
         }
@@ -67,6 +86,19 @@ class Perfil : AppCompatActivity() {
             Firebase.auth.signOut()
             finish()
             startActivity(Intent(this,MainActivity::class.java))
+        }
+
+        //Botón perfil
+        val btnPerfil: Button = findViewById(R.id.buttonPerfil)
+        btnPerfil.setOnClickListener {
+            cardPerfil.isVisible = true
+            cardVariables.isVisible = false
+        }
+        //Botón variables
+        val btnVariables: Button = findViewById(R.id.buttonVariables)
+        btnVariables.setOnClickListener {
+            cardVariables.isVisible = true
+            cardPerfil.isVisible = false
         }
     }
 

@@ -14,11 +14,8 @@ import com.google.firebase.auth.FirebaseAuth
 class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        //val splashScreen = installSplashScreen()
-        //setTheme(R.style.Theme_ToffeeCompañeroEmocional)
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        //splashScreen.setKeepOnScreenCondition{true}
 
         val textEmail: EditText = findViewById(R.id.editTextEmail)
         val textPass: EditText = findViewById(R.id.editTextPassword)
@@ -42,7 +39,7 @@ class MainActivity : AppCompatActivity() {
     private fun logIn(email: String, pass: String) {
         FirebaseAuth.getInstance().signInWithEmailAndPassword(email, pass).addOnCompleteListener {
             if (it.isSuccessful) {
-                val intent = Intent(this, Home::class.java)
+                val intent = Intent(this, Preguntas_principal::class.java)
                 startActivity(intent)
             } else {
                 Toast.makeText(this, "Error al iniciar la sesión", Toast.LENGTH_LONG).show()
@@ -54,7 +51,7 @@ class MainActivity : AppCompatActivity() {
         super.onResume()
         val currentUser = FirebaseAuth.getInstance().currentUser
         if (currentUser != null) {
-            val intent = Intent(this, Home::class.java)
+            val intent = Intent(this, Preguntas_principal::class.java)
             startActivity(intent)
         }
     }
