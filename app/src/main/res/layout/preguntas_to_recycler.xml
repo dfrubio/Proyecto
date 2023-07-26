@@ -4,10 +4,10 @@
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
-        android:layout_height="500dp"
+        android:layout_height="450dp"
         app:cardCornerRadius="40dp"
         app:cardBackgroundColor="@color/white"
-        android:layout_margin="10dp"
+        android:layout_margin="25dp"
         android:clickable="true"
         android:focusable="true">
 
@@ -17,26 +17,29 @@
 
             <ImageView
                 android:id="@+id/imageView7"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
                 android:layout_marginTop="10dp"
                 android:layout_marginEnd="20dp"
                 android:src="@drawable/toffee_verde_1"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent"></ImageView>
+                app:layout_constraintTop_toTopOf="parent" />
 
 
             <TextView
                 android:id="@+id/tvPreguntaRecycler"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_margin="5dp"
+                android:layout_margin="10dp"
+                android:paddingStart="20dp"
+                android:paddingEnd="20dp"
+                android:lineHeight="32dp"
                 android:fontFamily="@font/poppins_regular"
                 android:padding="10dp"
-                android:text="TextView"
+                android:text="¿Hoy tu malestar emocional te ha llevado a comer en mayor o menor cantidad de lo habitual?"
                 android:textAlignment="center"
                 android:textColor="@color/black"
-                android:textSize="30sp"
+                android:textSize="25sp"
                 app:layout_constraintBottom_toTopOf="@+id/slider"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -44,10 +47,10 @@
 
             <ImageView
                 android:id="@+id/imageViewNada"
-                android:layout_width="60dp"
-                android:layout_height="60dp"
+                android:layout_width="55dp"
+                android:layout_height="55dp"
                 android:layout_marginStart="10dp"
-                android:layout_marginEnd="10dp"
+                android:layout_marginEnd="0dp"
                 android:layout_marginBottom="30dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@+id/imageViewLeve"
@@ -57,10 +60,10 @@
 
             <ImageView
                 android:id="@+id/imageViewLeve"
-                android:layout_width="60dp"
-                android:layout_height="60dp"
-                android:layout_marginStart="10dp"
-                android:layout_marginEnd="10dp"
+                android:layout_width="55dp"
+                android:layout_height="55dp"
+                android:layout_marginStart="5dp"
+                android:layout_marginEnd="0dp"
                 app:layout_constraintEnd_toStartOf="@+id/imageViewModerado"
                 app:layout_constraintStart_toEndOf="@+id/imageViewNada"
                 app:layout_constraintTop_toTopOf="@+id/imageViewNada"
@@ -68,10 +71,10 @@
 
             <ImageView
                 android:id="@+id/imageViewModerado"
-                android:layout_width="60dp"
-                android:layout_height="60dp"
-                android:layout_marginStart="10dp"
-                android:layout_marginEnd="10dp"
+                android:layout_width="55dp"
+                android:layout_height="55dp"
+                android:layout_marginStart="5dp"
+                android:layout_marginEnd="0dp"
                 app:layout_constraintEnd_toStartOf="@+id/imageViewSevero"
                 app:layout_constraintStart_toEndOf="@+id/imageViewLeve"
                 app:layout_constraintTop_toTopOf="@+id/imageViewLeve"
@@ -79,10 +82,10 @@
 
             <ImageView
                 android:id="@+id/imageViewSevero"
-                android:layout_width="60dp"
-                android:layout_height="60dp"
-                android:layout_marginStart="10dp"
-                android:layout_marginEnd="10dp"
+                android:layout_width="55dp"
+                android:layout_height="55dp"
+                android:layout_marginStart="5dp"
+                android:layout_marginEnd="0dp"
                 app:layout_constraintEnd_toStartOf="@+id/imageViewExtremo"
                 app:layout_constraintStart_toEndOf="@+id/imageViewModerado"
                 app:layout_constraintTop_toTopOf="@+id/imageViewModerado"
@@ -93,8 +96,9 @@
 
             <ImageView
                 android:id="@+id/imageViewExtremo"
-                android:layout_width="60dp"
-                android:layout_height="60dp"
+                android:layout_width="55dp"
+                android:layout_height="55dp"
+                android:layout_marginStart="5dp"
                 android:layout_marginEnd="10dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/imageViewSevero"
@@ -109,6 +113,7 @@
                 android:fontFamily="@font/poppins_regular"
                 android:text="Nada"
                 android:textColor="@color/black"
+                android:textSize="13sp"
                 app:layout_constraintBottom_toTopOf="@+id/imageViewNada"
                 app:layout_constraintEnd_toEndOf="@+id/imageViewNada"
                 app:layout_constraintStart_toStartOf="@+id/imageViewNada" />
@@ -121,6 +126,7 @@
                 android:fontFamily="@font/poppins_regular"
                 android:text="Leve"
                 android:textColor="@color/black"
+                android:textSize="13sp"
                 app:layout_constraintBottom_toTopOf="@+id/imageViewLeve"
                 app:layout_constraintEnd_toEndOf="@+id/imageViewLeve"
                 app:layout_constraintStart_toStartOf="@+id/imageViewLeve" />
@@ -133,6 +139,7 @@
                 android:fontFamily="@font/poppins_regular"
                 android:text="Moderado"
                 android:textColor="@color/black"
+                android:textSize="13sp"
                 app:layout_constraintBottom_toTopOf="@+id/imageViewModerado"
                 app:layout_constraintEnd_toEndOf="@+id/imageViewModerado"
                 app:layout_constraintStart_toStartOf="@+id/imageViewModerado" />
@@ -145,6 +152,7 @@
                 android:fontFamily="@font/poppins_regular"
                 android:text="Severo"
                 android:textColor="@color/black"
+                android:textSize="13sp"
                 app:layout_constraintBottom_toTopOf="@+id/imageViewSevero"
                 app:layout_constraintEnd_toEndOf="@+id/imageViewSevero"
                 app:layout_constraintStart_toStartOf="@+id/imageViewSevero" />
@@ -157,6 +165,7 @@
                 android:fontFamily="@font/poppins_regular"
                 android:text="Extremo"
                 android:textColor="@color/black"
+                android:textSize="13sp"
                 app:layout_constraintBottom_toTopOf="@+id/imageViewExtremo"
                 app:layout_constraintEnd_toEndOf="@+id/imageViewExtremo"
                 app:layout_constraintStart_toStartOf="@+id/imageViewExtremo" />
