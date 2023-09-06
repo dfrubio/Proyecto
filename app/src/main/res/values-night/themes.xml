@@ -21,4 +21,9 @@
         <item name="android:windowBackground">@drawable/splashpage</item>
     </style>
 
+    <style name="PruebaBoton" parent="Theme.AppCompat.NoActionBar">
+        <item name="android:background">@drawable/background_degradado_boton_ep</item>
+        <item name="background">@drawable/background_degradado_boton_ep</item>
+    </style>
+
 </resources>

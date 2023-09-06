@@ -20,10 +20,10 @@
         android:id="@+id/recyclerPregunta"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginTop="20dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/imageViewLogoPreguntas"
-        android:layout_marginTop="20dp"/>
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/imageViewLogoPreguntas" />
 
     <com.facebook.shimmer.ShimmerFrameLayout
         android:id="@+id/shimmer_view_container"
@@ -33,17 +33,19 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@id/recyclerPregunta">
 
-        <include layout="@layout/preguntas_to_recycler_shimmer"/>
+        <include layout="@layout/preguntas_to_recycler_shimmer" />
 
     </com.facebook.shimmer.ShimmerFrameLayout>
 
-    <Button
+    <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btnSubirRespuestas"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="40dp"
         android:padding="5dp"
-        android:layout_marginBottom="8dp"
         android:text="Enviar Respuestas"
+        android:textColor="@color/white"
+        android:background="@drawable/background_degradado_boton_ep"
         android:visibility="invisible"
         app:layout_constraintBottom_toTopOf="@+id/linearLayout"
         app:layout_constraintEnd_toEndOf="parent"
@@ -53,34 +55,34 @@
         android:id="@+id/cardNoHayPreguntas"
         android:layout_width="0dp"
         android:layout_height="300dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@id/shimmer_view_container"
-        app:layout_constraintBottom_toTopOf="@id/btnSubirRespuestas"
         android:layout_marginStart="30dp"
         android:layout_marginEnd="30dp"
-        app:cardCornerRadius="20dp"
+        android:visibility="invisible"
         app:cardBackgroundColor="@color/white"
-        android:visibility="invisible">
+        app:cardCornerRadius="20dp"
+        app:layout_constraintBottom_toTopOf="@id/btnSubirRespuestas"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/shimmer_view_container">
 
         <ImageView
             android:layout_width="150dp"
             android:layout_height="150dp"
             android:layout_gravity="center"
             android:layout_marginBottom="30dp"
-            android:src="@drawable/toffee_preguntas"/>
+            android:src="@drawable/toffee_preguntas" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Ya respondiste tus preguntas diarias. Regresa mañana"
-            android:textStyle="bold"
-            android:textSize="20sp"
-            android:textColor="@color/black"
             android:layout_marginStart="20dp"
             android:layout_marginTop="200dp"
             android:layout_marginEnd="20dp"
-            android:textAlignment="center"/>
+            android:text="Ya respondiste tus preguntas diarias. Regresa mañana"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            android:textStyle="bold" />
 
     </androidx.cardview.widget.CardView>
 
@@ -98,10 +100,9 @@
             android:id="@+id/bottom_navigation"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:menu = "@menu/bottom_navigation_menu"
-            app:labelVisibilityMode="labeled"/>
+            app:labelVisibilityMode="labeled"
+            app:menu="@menu/bottom_navigation_menu" />
     </LinearLayout>
-
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

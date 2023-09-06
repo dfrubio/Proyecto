@@ -1,9 +1,9 @@
-
 plugins {
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
     id 'com.google.gms.google-services'
 }
+
 
 android {
     namespace 'com.ucatolica.toffeecompaeroemocional'
@@ -32,6 +32,9 @@ android {
     kotlinOptions {
         jvmTarget = '1.8'
     }
+    buildFeatures{
+        viewBinding = true
+    }
 }
 
 dependencies {
@@ -54,4 +57,5 @@ dependencies {
 
     //Material design incorporation
     implementation 'com.google.android.material:material:1.7.0'
+
 }
