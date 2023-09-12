@@ -29,23 +29,34 @@ class Perfil : AppCompatActivity() {
         val textNombre: TextView = findViewById(R.id.textNombre)
         val textCorreoUsuario: TextView = findViewById(R.id.textCorreo)
         val textNombrePsicologo : TextView = findViewById(R.id.textPsicologo)
+        val correoPsicologo: TextView = findViewById(R.id.textPsicologoAsociado)
         val btnLogOut: Button = findViewById(R.id.btnLogOut)
         val cardPerfil: CardView = findViewById(R.id.cardLogin)
         val cardVariables: CardView = findViewById(R.id.cardVariables)
+
 
         val indiceDepresion: TextView = findViewById(R.id.tvIndiceDepresion)
         val indiceAnsiedad: TextView = findViewById(R.id.tvIndiceAnsiedad)
 
         indiceDepresion.text = "Tu índice de depresión está en: ${prefs.getIndiceDepresion()}"
         indiceAnsiedad.text = "Tu índice de ansiedad está en: ${prefs.getIndiceAnsiedad()}"
+        textNombrePsicologo.text = prefs.getNombreSpicologo()
+        correoPsicologo.text = prefs.getCorreoSpicologo()
 
+        val btnSeleccionarPsicologo: Button = findViewById(R.id.btnSeleccionarPsicologo)
+        btnSeleccionarPsicologo.setOnClickListener{
+            startActivity(Intent(this, Seleccionar_psicologo::class.java))
+            finish()
+        }
 
-        val currentUser = FirebaseAuth.getInstance().currentUser
-        bttnHora = findViewById(R.id.button)
+       val currentUser = FirebaseAuth.getInstance().currentUser
+
+        // bloque de codigo que corresponde al setting de las horas de las notificaciones
+       /* bttnHora = findViewById(R.id.button)
         bttnHora?.setOnClickListener {
             val hora = TimePicker{hora, minuto -> mostrarResultado(hora, minuto)}
             hora.show(supportFragmentManager, "timePicker")
-        }
+        }*/
 
         db.collection("infobasica")
             .whereEqualTo("correoPrincipal", currentUser?.email)

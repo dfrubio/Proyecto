@@ -14,6 +14,9 @@
         android:theme="@style/Theme.ToffeeCompañeroEmocional"
         tools:targetApi="31">
         <activity
+            android:name=".Seleccionar_psicologo"
+            android:exported="false" />
+        <activity
             android:name=".Diario"
             android:exported="false">
             <meta-data

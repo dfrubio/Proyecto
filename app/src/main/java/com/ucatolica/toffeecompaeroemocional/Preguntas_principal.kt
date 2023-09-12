@@ -98,6 +98,7 @@ class Preguntas_principal : AppCompatActivity() {
                 ingertoPrueba.respuesta = listaRespuestas[n]
                 ingertoPrueba.fecha = Calendar.getInstance().time
                 ingertoPrueba.correo = currentUser?.email.toString()
+                ingertoPrueba.psicologo = prefs.getCorreoSpicologo().toString()
 
                 //Condicional para llenar la lista depresion
                 if((listaPreguntas[n].variable1 == "Depresión")||(listaPreguntas[n].variable2 == "Depresión")||(listaPreguntas[n].variable3 == "Depresión")){
@@ -108,6 +109,7 @@ class Preguntas_principal : AppCompatActivity() {
                     listaRespuestasAnsiedad.add(listaRespuestas[n])
                 }
                 //subida de respuestas a Firestore
+
                 db.collection("respuestasAndroid").add(ingertoPrueba).addOnSuccessListener {
                     Log.d("Subida", "Respuestas subidas con éxito $ingertoPrueba")
 
@@ -116,6 +118,33 @@ class Preguntas_principal : AppCompatActivity() {
 
             prefs.saveIndiceDepresion(listaRespuestasDepresion.average().toFloat())
             prefs.saveIndiceAnsiedad(listaRespuestasAnsiedad.average().toFloat())
+
+            //Variable donde se va a guardar el promedio de la respuestas relacionadas con la variable depresión
+            var promediodepresion = Promedio()
+            promediodepresion.correo = currentUser?.email.toString()
+            promediodepresion.psicologo = prefs.getCorreoSpicologo().toString()
+            promediodepresion.variable = "Depresión"
+            promediodepresion.promedio = listaRespuestasDepresion.average().toFloat()
+
+            //Variable donde se va a guardar el promedio de la respuestas relacionadas con la variable ansiedad
+            var promedioansiedad = Promedio()
+            promedioansiedad.correo = currentUser?.email.toString()
+            promedioansiedad.psicologo = prefs.getCorreoSpicologo().toString()
+            promedioansiedad.variable = "Ansiedad"
+            promedioansiedad.promedio = listaRespuestasAnsiedad.average().toFloat()
+
+            //subir los promedios obtenidos
+            //promedio de depresión
+            db.collection("promediosAndroid").add(promediodepresion).addOnSuccessListener {
+                Log.d("Subida", "Promedio depresión subido con éxito $promediodepresion")
+
+            }.addOnFailureListener { Toast.makeText(this, "Ha habido un error, comprueba tu conexión", Toast.LENGTH_SHORT).show() }
+
+            db.collection("promediosAndroid").add(promedioansiedad).addOnSuccessListener {
+                Log.d("Subida", "Promedio ansiedad subido con éxito $promedioansiedad")
+
+            }.addOnFailureListener { Toast.makeText(this, "Ha habido un error, comprueba tu conexión", Toast.LENGTH_SHORT).show() }
+
 
             Toast.makeText(this, "Respuestas subidas con éxito \uD83E\uDD20", Toast.LENGTH_SHORT).show()
 
@@ -150,6 +179,7 @@ class Preguntas_principal : AppCompatActivity() {
                 Log.d("Preguntas Lista", "Lista Diaria: $listaPregDiaria")
                 Log.d("Preguntas Lista", "Lista Aleatoria: $listaPregAleatoria")
                 Log.d("Preguntas Lista", "Lista Suicida: $listaPregSuicida")
+                //aqui es donde tento que hacer el cambio para tener solo 5 preguntas
                 listaPreguntas = listaPregDiaria
                 listaPregAleatoria.shuffle()
                 listaPreguntas.add(listaPregAleatoria[0])
@@ -165,8 +195,6 @@ class Preguntas_principal : AppCompatActivity() {
                 container.visibility = View.GONE
                 rvPreguntas.layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
                 rvPreguntas.adapter = PreguntaAdapter(listaPreguntas, {respuestasPreguntas(it)})
-
-
             }
             .addOnFailureListener { exception ->
                 Log.d("Preguntas", "Error getting documents: $exception", exception)
