@@ -1,25 +1,35 @@
 package com.ucatolica.toffeecompaeroemocional
 
 import android.content.Intent
+import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.widget.Button
+import android.widget.ProgressBar
 import android.widget.Toast
+import androidx.annotation.RequiresApi
 import androidx.cardview.widget.CardView
+import androidx.core.view.children
+import androidx.core.view.get
 import androidx.core.view.isVisible
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.facebook.shimmer.ShimmerFrameLayout
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.google.android.material.slider.Slider
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.ktx.toObject
 import com.ucatolica.toffeecompaeroemocional.oneDayApplication.Companion.prefs
 import java.util.Calendar
 
+public var posicionSlider: Int = 0
 
+/*public fun cambiarSliderPregunta(position: Int, slider: Slider){
+    slider.value = position.toFloat()
+}*/
 class Preguntas_principal : AppCompatActivity() {
 
     val db = FirebaseFirestore.getInstance()
@@ -31,6 +41,8 @@ class Preguntas_principal : AppCompatActivity() {
     var listaRespuestasDepresion = mutableListOf<Float>()
     var listaRespuestasAnsiedad = mutableListOf<Float>()
 
+
+    @RequiresApi(Build.VERSION_CODES.M)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_preguntas_principal)
@@ -87,11 +99,34 @@ class Preguntas_principal : AppCompatActivity() {
             }
         }
         //Depliegue de preguntas
+        val rvPreguntas: RecyclerView = findViewById(R.id.recyclerPregunta)
+        val progressBar: ProgressBar = findViewById(R.id.progressBarPreguntas)
+
+        rvPreguntas.addOnLayoutChangeListener { v, left, top, right, bottom, oldLeft, oldTop, oldRight, oldBottom ->
+            progressBar.apply {
+                max = 4
+                progress = posicionSlider
+            }
+        }
+
+        /*rvPreguntas.setOnScrollChangeListener { v, scrollX, scrollY, oldScrollX, oldScrollY ->
+            //Toast.makeText(this, "Posicion $oldScrollX", Toast.LENGTH_SHORT).show()
+            progressBar.apply {
+                max = 400
+                if (oldScrollX < 0) {
+                    oldScrollX * -1
+                }
+                progress = oldScrollX
+            }
+            //var prueba = PreguntaAdapter()
+            //Toast.makeText(this, "Posicion $prueba", Toast.LENGTH_SHORT).show()
+        }*/
+
 
         //boton para subir respuestas
         btnSubirRespuestas.setOnClickListener {
             val ingertoPrueba = Respuesta()
-
+            //Sube las respuestas a la DB y crea las listas de respuestas relacionadas con cada variable
             for (n: Int in 0..listaPreguntas.size-1){
                 ingertoPrueba.pregunta = listaPreguntas[n].pregunta
                 ingertoPrueba.idPregunta = listaPreguntas[n].idPregunta
@@ -154,7 +189,9 @@ class Preguntas_principal : AppCompatActivity() {
             Log.d("Variables", "lista de depresión: $listaRespuestasDepresion, y su promedio es ${listaRespuestasDepresion.average()}")
             Log.d("Variables", "lista de ansiedad: $listaRespuestasAnsiedad, y su promedio es ${listaRespuestasAnsiedad.average()}")
         }
+
     }
+
 
 
     fun cargarPreguntas(){
@@ -166,16 +203,22 @@ class Preguntas_principal : AppCompatActivity() {
             .addOnSuccessListener { result ->
                 for (document in result) {
                     val preg = document.toObject<Pregunta>()
-                    if (preg.periodicidad.toString() == "Diaria"){
+                    // Bloque que filtra las preguntas en 3 listas, diaria, aleatoria y condicional, se requiere cambiar por cambio de requerimientos
+                    // Ya no se solicitan preguntas fijas diarias, se reemplaza por 5 preguntas aleatorias del banco de preguntas exceptuando las condicionales
+                    /*if (preg.periodicidad.toString() == "Diaria"){
                         listaPregDiaria.add(preg)
                     }else if(preg.periodicidad.toString() == "Aleatoria"){
                         listaPregAleatoria.add(preg)
                     }else if (preg.periodicidad.toString() == "Condicional"){
                         listaPregSuicida.add(preg)
+                    }*/
+                    if ((preg.periodicidad.toString() == "Diaria") or (preg.periodicidad.toString() == "Aleatoria") ) {
+                        listaPregAleatoria.add(preg)
                     }
-                    //listaPreguntas.add(preg)
-                    //Log.d("Preguntas Lista", "listaPreguntas: $listaPreguntas")
                 }
+                //Bloque de codigo que me mostraba lo que se cargaba en las 3 listas de preguntas y hcía la mezcla del orden junto con las aleatorias
+                //Por cambios en requerimientos se deja de usar
+                /*
                 Log.d("Preguntas Lista", "Lista Diaria: $listaPregDiaria")
                 Log.d("Preguntas Lista", "Lista Aleatoria: $listaPregAleatoria")
                 Log.d("Preguntas Lista", "Lista Suicida: $listaPregSuicida")
@@ -184,17 +227,30 @@ class Preguntas_principal : AppCompatActivity() {
                 listaPregAleatoria.shuffle()
                 listaPreguntas.add(listaPregAleatoria[0])
                 listaPreguntas.add(listaPregAleatoria[1])
+                */
+                //uso la listaPregAleatoria para tener todas las posibles preguntas y mezclarlas
+                listaPregAleatoria.shuffle()
+                //Ahora de esta mezcla asigno 5 a la lista de preguntas que se va a mostrar
+                listaPreguntas.add(listaPregAleatoria[0])
+                listaPreguntas.add(listaPregAleatoria[1])
+                listaPreguntas.add(listaPregAleatoria[2])
+                listaPreguntas.add(listaPregAleatoria[3])
+                listaPreguntas.add(listaPregAleatoria[4])
+
+                //Este for, hace que la lista de respuestas tenga el mismo size que la lista de preguntas
                 for (i:Int in 0 .. listaPreguntas.size-1){
                     listaRespuestas.add(0f)
                     //Test para ver las variables de las preguntas
                     Log.d("Variables", "las variables de la pregunta $i son |${listaPreguntas[i].variable1}| - |${listaPreguntas[i].variable2}| - |${listaPreguntas[i].variable3}|")
                 }
+                //no es estrictamente necesario hacer este segundo shuffle pero puede agregar aleatoriedad al asunto
                 listaPreguntas.shuffle()
                 container.stopShimmer()
                 container.hideShimmer()
                 container.visibility = View.GONE
                 rvPreguntas.layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
                 rvPreguntas.adapter = PreguntaAdapter(listaPreguntas, {respuestasPreguntas(it)})
+
             }
             .addOnFailureListener { exception ->
                 Log.d("Preguntas", "Error getting documents: $exception", exception)

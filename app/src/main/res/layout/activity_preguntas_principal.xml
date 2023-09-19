@@ -6,6 +6,8 @@
     android:layout_height="match_parent"
     tools:context=".Preguntas_principal">
 
+
+
     <ImageView
         android:id="@+id/imageViewLogoPreguntas"
         android:layout_width="130dp"
@@ -15,6 +17,30 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/logo" />
+
+    <ProgressBar
+        android:id="@+id/progressBarPreguntas"
+        style="@android:style/Widget.ProgressBar.Horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/imageViewLogoPreguntas"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        />
+
+    <!-- <com.google.android.material.slider.Slider
+        android:id="@+id/sliderPosicionPreguntas"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="20dp"
+        android:layout_marginBottom="20dp"
+        android:stepSize="1.0"
+        android:valueFrom="1"
+        android:valueTo="5"
+        app:layout_constraintTop_toBottomOf="@+id/imageViewLogoPreguntas"
+        /> -->
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerPregunta"

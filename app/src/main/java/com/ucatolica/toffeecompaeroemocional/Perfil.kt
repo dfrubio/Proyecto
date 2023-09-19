@@ -92,9 +92,14 @@ class Perfil : AppCompatActivity() {
             }
         }
 
-        //Botón para desloguearse
+        //Botón para desloguearse (cerrar sesión)
         btnLogOut.setOnClickListener {
             Firebase.auth.signOut()
+            //se elimina al psicologo de los datos de la app
+            prefs.saveCorreoPsicologo("Selecciona un Psicólogo")
+            prefs.saveNombrePsicologo("Selecciona un Psicólogo")
+            Toast.makeText(this, "Selecciona un psicólogo al ingresar de nuevo", Toast.LENGTH_SHORT).show()
+            //
             finish()
             startActivity(Intent(this,MainActivity::class.java))
         }

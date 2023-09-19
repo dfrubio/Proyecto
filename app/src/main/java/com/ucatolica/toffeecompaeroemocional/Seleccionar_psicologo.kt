@@ -10,6 +10,7 @@ import android.widget.EditText
 import android.widget.ImageButton
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.ktx.toObject
 
@@ -48,13 +49,32 @@ class Seleccionar_psicologo : AppCompatActivity() {
 
     private fun llenarListaPsicologos() {
         val rvPsicologo: RecyclerView = findViewById(R.id.recyclerView_psicologo)
+        var currentPaciente = Paciente()
+        db.collection("infobasica")
+            .get()
+            .addOnSuccessListener { result ->
+                for (document in result) {
+                    val paciente = document.toObject<Paciente>()
+                    //agregar aquí un condicional que filtre si el psicologo es de la entidad de salud del paciente
+                    val currentUser = FirebaseAuth.getInstance().currentUser
+                    if (paciente.correoPrincipal == currentUser?.email){
+                        currentPaciente = paciente
+                    }
+
+                }
+                Log.d("Lista Psicologo", "Lista Psicologo: $listaPsicologos")
+            }
         db.collection("profesional")
             .get()
             .addOnSuccessListener { result ->
                 for (document in result) {
                     val psico = document.toObject<psicologo>()
                     //agregar aquí un condicional que filtre si el psicologo es de la entidad de salud del paciente
-                    listaPsicologos.add(psico)
+                    val currentUser = FirebaseAuth.getInstance().currentUser
+                    if (psico.entidadDeSalud == currentPaciente.servicioSalud){
+                        listaPsicologos.add(psico)
+                    }
+
                 }
                 Log.d("Lista Psicologo", "Lista Psicologo: $listaPsicologos")
             }

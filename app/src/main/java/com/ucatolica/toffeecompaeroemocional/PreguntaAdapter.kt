@@ -1,8 +1,11 @@
 package com.ucatolica.toffeecompaeroemocional
 
 import android.view.LayoutInflater
+import android.view.MotionEvent
 import android.view.View
+import android.view.View.OnClickListener
 import android.view.ViewGroup
+import android.widget.AdapterView.OnItemClickListener
 import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
@@ -18,7 +21,7 @@ class PreguntaAdapter(var listaPreguntas: MutableList<Pregunta>, private val res
 
     override fun onBindViewHolder(holder: PreguntaViewHolder, position: Int) {
         val item = listaPreguntas[position]
-        holder.render(item, respuestasPreguntas)
+        holder.render(item, respuestasPreguntas, position)
     }
 
     override fun getItemCount(): Int = listaPreguntas.size
@@ -32,12 +35,22 @@ class PreguntaAdapter(var listaPreguntas: MutableList<Pregunta>, private val res
         private val severo: ImageView = itemView.findViewById(R.id.imageViewSevero)
         private val extremo: ImageView = itemView.findViewById(R.id.imageViewExtremo)
 
-        fun render(preg: Pregunta,  respuestasPreguntas: (List<Float>) -> Unit){
+        fun render(preg: Pregunta,  respuestasPreguntas: (List<Float>) -> Unit, position: Int){
 
             textPreg.text = preg.pregunta
             val primeraRespuesta = listOf<Float>(adapterPosition.toFloat(),slider.value)
             respuestasPreguntas(primeraRespuesta)
             setBackground(nada, leve, moderado, severo, extremo)
+            itemView.setOnClickListener {
+                Toast.makeText(itemView.context, "Hola estoy en $position", Toast.LENGTH_SHORT).show()
+                posicionSlider = position
+            }
+
+            itemView.setOnClickListener {
+                posicionSlider = position
+            }
+
+
 
             slider.addOnChangeListener { slider, value, fromUser ->
                 when(value){
@@ -50,19 +63,27 @@ class PreguntaAdapter(var listaPreguntas: MutableList<Pregunta>, private val res
 
                 val variableTest = listOf<Float>(adapterPosition.toFloat(),value)
                 respuestasPreguntas(variableTest)
+                posicionSlider = position
+               //val instacia = Preguntas_principal()
+
 
             } //Funciona el listener del slider
 
             nada.setOnClickListener { setBackground(nada, leve, moderado, severo, extremo)
-                slider.value = 1F } //puedo setear el valor del slider
+                slider.value = 1F
+                posicionSlider = position} //puedo setear el valor del slider
             leve.setOnClickListener { setBackground(leve, nada, moderado, severo, extremo)
-                slider.value = 2F }
+                slider.value = 2F
+                posicionSlider = position}
             moderado.setOnClickListener { setBackground(moderado, nada, leve, severo, extremo)
-                slider.value = 3F }
+                slider.value = 3F
+                posicionSlider = position}
             severo.setOnClickListener { setBackground(severo, nada, leve, moderado, extremo)
-                slider.value = 4F }
+                slider.value = 4F
+                posicionSlider = position}
             extremo.setOnClickListener { setBackground(extremo, nada, leve, moderado, severo)
-                slider.value = 5F }
+                slider.value = 5F
+                posicionSlider = position}
 
         }
         fun setBackground(emocion: ImageView, cambio1:ImageView, cambio2:ImageView, cambio3:ImageView, cambio4:ImageView){
@@ -72,5 +93,8 @@ class PreguntaAdapter(var listaPreguntas: MutableList<Pregunta>, private val res
             cambio3.setBackgroundResource(R.color.white)
             cambio4.setBackgroundResource(R.color.white)
         }
+
     }
 }
+
+
