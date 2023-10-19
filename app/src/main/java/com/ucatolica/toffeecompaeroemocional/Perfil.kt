@@ -98,6 +98,8 @@ class Perfil : AppCompatActivity() {
             //se elimina al psicologo de los datos de la app
             prefs.saveCorreoPsicologo("Selecciona un Psicólogo")
             prefs.saveNombrePsicologo("Selecciona un Psicólogo")
+            prefs.saveIndiceDepresion(0f)
+            prefs.saveIndiceAnsiedad(0f)
             Toast.makeText(this, "Selecciona un psicólogo al ingresar de nuevo", Toast.LENGTH_SHORT).show()
             //
             finish()

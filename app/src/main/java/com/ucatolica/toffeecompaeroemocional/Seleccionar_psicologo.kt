@@ -60,7 +60,6 @@ class Seleccionar_psicologo : AppCompatActivity() {
                     if (paciente.correoPrincipal == currentUser?.email){
                         currentPaciente = paciente
                     }
-
                 }
                 Log.d("Lista Psicologo", "Lista Psicologo: $listaPsicologos")
             }
